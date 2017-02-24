@@ -41,11 +41,16 @@
     }
 
     main.appendChild(getEmail(toAdd));
-    console.log(toAdd);
+    
+    //console.log(toAdd);
+    var newAdd = document.createDocumentFragment();
 
-getEmail()
-
-    //setInterval(getEmail(), 5000);
+    //function to append emails
+    var appender = function(){
+    	var newss = getEmail(newAdd);
+    	main.appendChild(newss)
+    }
+    setInterval(appender, 5000);
 
     function displayBody(){
     	//changes something to display the email...https://www.w3schools.com/cssref/pr_class_visibility.asp ?
