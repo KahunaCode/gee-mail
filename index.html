@@ -9,10 +9,12 @@
         //console.log(geemails);
         
         toAdd = document.createDocumentFragment();
-        function getEmail(){
+        function getEmail(fragment){
         	for (var i = 0; i<geemails.length; i++){
 				//console.log(geemails[i]);
 				var emailDiv = document.createElement("div");
+				emailDiv.className = "emailContainer"
+				emailDiv.addEventListener("click", displayBody)
 
         		var date = document.createElement("div");
         		date.className = "dtg"
@@ -34,21 +36,20 @@
         		body.innerHTML = geemails[i].body
         		emailDiv.appendChild(body)
 
-        		toAdd.appendChild(emailDiv);
-
-
-
-        } //console.log(emailDiv)
+        		fragment.appendChild(emailDiv);
+        } return fragment//console.log(emailDiv)
     }
 
-    emailContainer.appendChild(toAdd);
+    main.appendChild(getEmail(toAdd));
     console.log(toAdd);
 
 getEmail()
 
     //setInterval(getEmail(), 5000);
 
-        
+    function displayBody(){
+    	//changes something to display the email...https://www.w3schools.com/cssref/pr_class_visibility.asp ?
+    }
 
 
 
