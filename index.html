@@ -34,6 +34,7 @@
         		var body = document.createElement("div");
         		body.className = "body"
         		body.innerHTML = geemails[i].body
+        		body.style.display = "none"
         		emailDiv.appendChild(body)
 
         		fragment.appendChild(emailDiv);
@@ -56,6 +57,11 @@
     	//changes something to display the email...https://www.w3schools.com/cssref/pr_class_visibility.asp ?
     }
 
+    function emailCounter(){
+        	document.getElementById('mailCounter').innerHTML = `${document.getElementsByClassName('dtg').length} new emails`
+    	}
+    	setInterval(emailCounter, 5000);
+
 
 
 
@@ -65,6 +71,7 @@
 	<body>
 		<div class="container" id="main">
 			<header id="welcome">Welcome to Geemail!</header>
+			<div id="mailCounter">10 new emails</div>
 			<div id="emailContainer"></div>
 		</div>
 	</body>
