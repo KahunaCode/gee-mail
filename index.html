@@ -8,13 +8,18 @@
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
         //console.log(geemails);
         
+        var globalCounter = 1
+
+        
+
         toAdd = document.createDocumentFragment();
         function getEmail(fragment){
         	for (var i = 0; i<geemails.length; i++){
-				//console.log(geemails[i]);
 				var emailDiv = document.createElement("div");
 				emailDiv.className = "emailContainer"
+				emailDiv.id = globalCounter+geemails[i].sender.replace(/ /g, '');
 				emailDiv.addEventListener("click", displayBody)
+				globalCounter++;
 
         		var date = document.createElement("div");
         		date.className = "dtg"
@@ -54,7 +59,7 @@
     setInterval(appender, 5000);
 
     function displayBody(){
-    	//changes something to display the email...https://www.w3schools.com/cssref/pr_class_visibility.asp ?
+    	document.getElementsByClassName("body").style.display = "block";
     }
 
     function emailCounter(){
@@ -62,7 +67,26 @@
     	}
     	setInterval(emailCounter, 5000);
 
+		// document.getElementsByClassName("dtg").addEventListener("click", displayBody);
 
+        // function displayBody() {
+        // 	document.getElementsByClassName("body").style.display = "block";
+        // }
+
+
+// var showBody = document.getElementsByClassName("dtg");
+        // for (var ii = 0; ii<showBody.length; ii++){
+        // 	showBody[ii].addEventListener("click", readEmail);
+        // }
+
+        // function readEmail(){
+        // 	var emailContent = this.querySelectorAll("body")[0];
+        // 	if (emailContent.style.display === "none"){
+        // 		emailContent.style.display = "block";
+        // 	} else {
+        // 		emailContent.style.display = "none";
+        // 	}
+        // }
 
 
       };
