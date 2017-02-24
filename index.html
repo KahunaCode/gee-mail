@@ -59,7 +59,12 @@
     setInterval(appender, 5000);
 
     function displayBody(){
-    	document.getElementsByClassName("body").style.display = "block";
+    	var emailContent = this.querySelectorAll(".body")[0];
+  				if (emailContent.style.display === "none"){
+    				emailContent.style.display = "block";
+  				}else{
+    			emailContent.style.display = "none";
+    			}
     }
 
     function emailCounter(){
@@ -67,26 +72,7 @@
     	}
     	setInterval(emailCounter, 5000);
 
-		// document.getElementsByClassName("dtg").addEventListener("click", displayBody);
 
-        // function displayBody() {
-        // 	document.getElementsByClassName("body").style.display = "block";
-        // }
-
-
-// var showBody = document.getElementsByClassName("dtg");
-        // for (var ii = 0; ii<showBody.length; ii++){
-        // 	showBody[ii].addEventListener("click", readEmail);
-        // }
-
-        // function readEmail(){
-        // 	var emailContent = this.querySelectorAll("body")[0];
-        // 	if (emailContent.style.display === "none"){
-        // 		emailContent.style.display = "block";
-        // 	} else {
-        // 		emailContent.style.display = "none";
-        // 	}
-        // }
 
 
       };
