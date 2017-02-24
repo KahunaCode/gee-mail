@@ -6,14 +6,60 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+        //console.log(geemails);
         
+        toAdd = document.createDocumentFragment();
+        function getEmail(){
+        	for (var i = 0; i<geemails.length; i++){
+				//console.log(geemails[i]);
+				var emailDiv = document.createElement("div");
+
+        		var date = document.createElement("div");
+        		date.className = "dtg"
+        		date.innerHTML = geemails[i].date
+        		emailDiv.appendChild(date);
+
+        		var subject = document.createElement("div");
+        		subject.className = "subj"
+        		subject.innerHTML = geemails[i].subject
+        		emailDiv.appendChild(subject)
+
+        		var sender = document.createElement("div");
+        		sender.className = "sentBy"
+        		sender.innerHTML = geemails[i].sender
+        		emailDiv.appendChild(sender)
+
+        		var body = document.createElement("div");
+        		body.className = "body"
+        		body.innerHTML = geemails[i].body
+        		emailDiv.appendChild(body)
+
+        		toAdd.appendChild(emailDiv);
+
+
+
+        } //console.log(emailDiv)
+    }
+
+    emailContainer.appendChild(toAdd);
+    console.log(toAdd);
+
+getEmail()
+
+    //setInterval(getEmail(), 5000);
+
         
+
+
+
+
       };
     </script>
 	</head>
 	<body>
 		<div class="container" id="main">
-			Build Me!
+			<header id="welcome">Welcome to Geemail!</header>
+			<div id="emailContainer"></div>
 		</div>
 	</body>
 </html>
