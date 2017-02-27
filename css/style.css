@@ -22,8 +22,12 @@ h1{
 	margin-right: 25px;
 }
 
-.dtg{
+.dtg {
 	padding-left: 5px;
+}
+
+.subj, .sentBy, .body {
+	padding-left: 17px;
 }
 
 .circlePic{
