@@ -6,6 +6,10 @@ header{
 	margin: 15px;
 }
 
+h1{
+	padding-top: 10px;
+}
+
 #mailCounter{
 	color:blue;
 	margin: 15px;

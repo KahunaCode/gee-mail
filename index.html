@@ -10,13 +10,18 @@
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
         //console.log(geemails);
         
+
+        //toAdd is an empty node I build for attaching the emails. getEmail() queries geemails, sets up an emailDiv container which holds the read/unread status of the email and corresponding icon, the date/time group, email subject, sender, and email body. Function is used to both generate the email loads and then is used to query/update for new emails too.
         toAdd = document.createDocumentFragment();
         function getEmail(fragment){
         	for (var i = 0; i<geemails.length; i++){
 				var emailDiv = document.createElement("div");
 				emailDiv.className = "emailContainer"
 				emailDiv.addEventListener("click", displayBody)
-                emailDiv.addEventListener("click", markRead)
+
+                var readUnread = document.createElement("div");
+                readUnread.className = "unread";
+                emailDiv.appendChild(readUnread);
 
         		var circle = document.createElement("img");
                 circle.className = "circlePic"
@@ -45,21 +50,21 @@
         		emailDiv.appendChild(body)
 
         		fragment.appendChild(emailDiv);
-        } return fragment//console.log(emailDiv)
+        } return fragment
     }
 
     main.appendChild(getEmail(toAdd));
     
-    //console.log(toAdd);
     var newAdd = document.createDocumentFragment();
 
-    //function to append emails
+    //function to get new emails
     var appender = function(){
     	var newss = getEmail(newAdd);
     	main.appendChild(newss)
     }
     setInterval(appender, 60000);
 
+    //selects body of email and displays it, changes geen "unread" icon to grey, and swaps the class name to "readByUser" for each email with a try/catch around it. email counter is counting emails with the default className of "unread"
     function displayBody(){
     	var emailContent = this.querySelectorAll(".body")[0];
   				if (emailContent.style.display === "none"){
@@ -67,28 +72,23 @@
   				}else{
     			emailContent.style.display = "none";
     			}
-    }
-
-    function markRead(){
         var marked = this.querySelectorAll(".circlePic")[0];
-            console.log("marked = "+marked)
             marked.src = "img/circle16grey.png"
+
+        try{
+            var read = this.querySelectorAll(".unread")[0];
+                read.className = "readByUser";
+            }catch(err){
+            }
     }
 
-    function trigger(){
-        displayBody();
-        markRead();
-    }
-
+    //counts emails and puts them on the page
     function emailCounter(){
-        	document.getElementById('mailCounter').innerHTML = `${document.getElementsByClassName('dtg').length} new emails`
+        	document.getElementById('mailCounter').innerHTML = `${document.getElementsByClassName('unread').length} new emails`
     	}
-    	setInterval(emailCounter, 5000);
+    	setInterval(emailCounter, 100);
 
-
-
-
-      };
+    };
     </script>
 	</head>
 	<body>
@@ -101,7 +101,7 @@
                     <h1>GeeMail</h1>
                 </div>
             </header>
-			<div id="mailCounter">10 new emails</div>
+			<div id="mailCounter"></div>
 			<div id="emailContainer"></div>
 		</div>
 	</body>
