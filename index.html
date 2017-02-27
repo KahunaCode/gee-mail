@@ -16,8 +16,14 @@
 				var emailDiv = document.createElement("div");
 				emailDiv.className = "emailContainer"
 				emailDiv.addEventListener("click", displayBody)
+                emailDiv.addEventListener("click", markRead)
 
-        		var date = document.createElement("div");
+        		var circle = document.createElement("img");
+                circle.className = "circlePic"
+                circle.src = "img/circle16green.png"
+                emailDiv.appendChild(circle);
+
+                var date = document.createElement("div");
         		date.className = "dtg"
         		date.innerHTML = geemails[i].date
         		emailDiv.appendChild(date);
@@ -61,6 +67,17 @@
   				}else{
     			emailContent.style.display = "none";
     			}
+    }
+
+    function markRead(){
+        var marked = this.querySelectorAll(".circlePic")[0];
+            console.log("marked = "+marked)
+            marked.src = "img/circle16grey.png"
+    }
+
+    function trigger(){
+        displayBody();
+        markRead();
     }
 
     function emailCounter(){
