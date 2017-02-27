@@ -23,15 +23,21 @@
                 readUnread.className = "unread";
                 emailDiv.appendChild(readUnread);
 
-        		var circle = document.createElement("img");
+                var topline = document.createElement("div");
+                topline.className = "top"
+        		
+                var circle = document.createElement("img");
                 circle.className = "circlePic"
                 circle.src = "img/circle16green.png"
-                emailDiv.appendChild(circle);
+                circle.style.display = "inline"
+                topline.appendChild(circle);
 
                 var date = document.createElement("div");
         		date.className = "dtg"
         		date.innerHTML = geemails[i].date
-        		emailDiv.appendChild(date);
+                date.style.display = "inline"
+        		topline.appendChild(date);
+                emailDiv.appendChild(topline);
 
         		var subject = document.createElement("div");
         		subject.className = "subj"
@@ -76,15 +82,21 @@
         readUnread.className = "unread";
         emailDiv.appendChild(readUnread);
 
+        var topline = document.createElement("div");
+        topline.className = "top"
+
         var circle = document.createElement("img");
         circle.className = "circlePic"
         circle.src = "img/circle16green.png"
-        emailDiv.appendChild(circle);
+        circle.style.display = "inline"
+        topline.appendChild(circle);
 
         var date = document.createElement("div");
         date.className = "dtg"
         date.innerHTML = newMsg.date
-        emailDiv.appendChild(date);
+        date.style.display = "inline"
+        topline.appendChild(date);
+        emailDiv.appendChild(topline);
 
         var subject = document.createElement("div");
         subject.className = "subj"
@@ -143,7 +155,6 @@
                 </div>
             </header>
 			<div id="mailCounter"></div>
-			<div id="emailContainer"></div>
 		</div>
 	</body>
 </html>
