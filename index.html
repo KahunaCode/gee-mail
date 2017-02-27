@@ -58,11 +58,52 @@
     var newAdd = document.createDocumentFragment();
 
     //function to get new emails
-    var appender = function(){
-    	var newss = getEmail(newAdd);
-    	main.appendChild(newss)
-    }
-    setInterval(appender, 60000);
+    // var appender = function(){
+    // 	var newss = getEmail(newAdd);
+    // 	main.appendChild(newss)
+    // }
+    // setInterval(appender, 60000);
+
+    //function to get new emails with getNewMessage instead of creating my own
+    setInterval(function(){
+        var newMsg = getNewMessage()
+        
+        var emailDiv = document.createElement("div");
+        emailDiv.className = "emailContainer"
+        emailDiv.addEventListener("click", displayBody)
+
+        var readUnread = document.createElement("div");
+        readUnread.className = "unread";
+        emailDiv.appendChild(readUnread);
+
+        var circle = document.createElement("img");
+        circle.className = "circlePic"
+        circle.src = "img/circle16green.png"
+        emailDiv.appendChild(circle);
+
+        var date = document.createElement("div");
+        date.className = "dtg"
+        date.innerHTML = newMsg.date
+        emailDiv.appendChild(date);
+
+        var subject = document.createElement("div");
+        subject.className = "subj"
+        subject.innerHTML = newMsg.subject
+        emailDiv.appendChild(subject)
+
+        var sender = document.createElement("div");
+        sender.className = "sentBy"
+        sender.innerHTML = newMsg.sender
+        emailDiv.appendChild(sender)
+
+        var body = document.createElement("div");
+        body.className = "body"
+        body.innerHTML = newMsg.body
+        body.style.display = "none"
+        emailDiv.appendChild(body)
+
+        main.appendChild(emailDiv)
+    }, 5000)
 
     //selects body of email and displays it, changes geen "unread" icon to grey, and swaps the class name to "readByUser" for each email with a try/catch around it. email counter is counting emails with the default className of "unread"
     function displayBody(){
