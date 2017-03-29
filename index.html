@@ -7,11 +7,9 @@
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        //console.log(geemails);
-        
+        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser        
 
-        //toAdd is an empty node I build for attaching the emails. getEmail() queries geemails, sets up an emailDiv container which holds the read/unread status of the email and corresponding icon, the date/time group, email subject, sender, and email body. Function is used to both generate the email loads and then is used to query/update for new emails too.
+        //toAdd is an empty node I build for attaching the emails. getEmail() queries geemails, sets up an emailDiv container which holds the read/unread status of the email and corresponding icon, the date/time group, email subject, sender, and email body.
         toAdd = document.createDocumentFragment();
         function getEmail(fragment){
         	for (var i = 0; i<geemails.length; i++){
